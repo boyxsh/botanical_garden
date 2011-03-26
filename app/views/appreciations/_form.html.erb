@@ -1,0 +1,41 @@
+<%= form_for(@appreciation,  :html =>{:multipart => true } ) do |f| %>
+  <% if @appreciation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@appreciation.errors.count, "error") %> prohibited this appreciation from being saved:</h2>
+
+      <ul>
+      <% @appreciation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="field">
+          <%= f.label :category %><br />
+          <%=select("appreciation", "category_id", Category.all.collect{|c|[c.name, c.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Categories:</b>
+  <%= @appreciation.category.name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @appreciation.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @appreciation.title %>
+</p>
+
+<p>
+  <b>Image:</b>
+<%= image_tag @appreciation.avatar.url(:medium) %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <pre>
+  <%= @appreciation.description %>
+  </pre>
+</p>
+
+
+<%= link_to 'Edit', edit_appreciation_path(@appreciation) %> |
+<%= link_to 'Back', appreciations_path %>

@@ -1,4 +1,8 @@
 BotanicalGarden::Application.routes.draw do
+  resources :categories
+
+  resources :appreciations
+
   get "home/index"
 
   devise_for :users
