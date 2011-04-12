@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
 
     def is_admin?
-        self.email == "boyxsh@163.com"
+       User.all.any? ? (self == User.first || self.admin?): true
     end
 end
