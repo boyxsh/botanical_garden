@@ -1,0 +1,33 @@
+<%= link_to "forums",forums_path %> >> <%= @forum.name  %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @forum.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @forum.description %>
+</p>
+<table>
+  <tr>
+    <th>主题topic</th>
+    <td class="author">作者</td>
+    <td class="nums">回复/查看</td>
+    <td class="lastpost">最后发表</td>
+  </tr>
+<% @forum.topics.each do |topic| %>
+  <tr>
+    <td><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
+    <td><%= topic.posts.first.user.email %></td>
+    <td><%= topic.posts.size %></td>
+    <td><%= topic.posts.last.body %></td>
+    <td>[<%=  topic.posts.last.updated_at %>]</td>
+    <td>[topic: <%=  topic.updated_at %>]</td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "newTopics" , {:action=>"new", :controller=>"topics", :forum_id => @forum.id} %>
+<%#= link_to 'Edit', edit_forum_path(@forum) %> 
+<%#= link_to 'Back', forums_path %>
