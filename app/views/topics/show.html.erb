@@ -1,8 +1,6 @@
-<p>
-  <%= link_to "forums",forums_path %> >> <%= link_to @topic.forum.name ,forum_path(@topic.forum)%> >>  <%= @topic.title %>
-</p>
-
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= link_to "植物园论坛",forums_path %> > <%= link_to @topic.forum.name ,forum_path(@topic.forum)%> >  <%= @topic.title %>
+</h1>
 
 <p>
   <b>Title:</b>
@@ -26,15 +24,19 @@
 
 
 
-<table>
-<% @topic.posts.each do |post| %>
-<tr>
-  <td> <%=post.body %> by <%= post.user.email %> [<%= post.created_at %>]</td>
-</tr>
-<% end %>
-</table>
 
-<h2>Add a post</h2>
+<% @topic.posts.each_with_index do |post, index| %>
+  <table >
+    <tr>
+      <td><%= index+1 %>楼  <%= post.user.email %> [<%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>] <%= "发表于" + show_post_time(post.created_at) %></td>
+    </tr>
+    <tr class="post_body">
+      <td> <%=post.body %> by </td>
+    </tr>
+  </table>
+<% end %>
+
+<%#*<h2>回复</h2>%>
 <%= render "posts/form" %>
 
 <%#= link_to 'Edit', edit_topic_path(@topic) %> 

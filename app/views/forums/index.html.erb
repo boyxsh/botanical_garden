@@ -1,27 +1,32 @@
-<h1>Listing forums</h1>
+
+<h1 >植物园论坛</h1>
+
 
 <table>
 
-  <h3> 鹭她主题</h3>
-  <tr> <th>版块</th> <td class="nums">主题</td> <td class="nums">帖数</td> <td class="lastpost">最后发表</td> </tr>
-  <% @forums.each do |forum| %>
-    <tr>
-      <td><h2><%= link_to forum.name ,forum_path(forum)%></h2></td>
-      <td><p><%= forum.description %></p></td>
-      <td>10</td>
-      <td>22</td>
+  <tr>
+    <td class="grid_3">版块</td>
+    <td class="grid_3">主题</td>
+    <td class="grid_2">帖数</td>
+    <td class="grid_3">最后发表</td>
+  </tr>
+
+<% @forums.each do |forum| %>
+    <tr >
+      <td class="grid_3"><h2><%= link_to forum.name ,forum_path(forum)%></h2></td>
+      <td class="grid_3"><p><%= forum.description %></p></td>
+      <td class="grid_2"><%=  forum.posts.size%></td>
       <%  if topic = forum.get_latest_posted_topic %>
-        <td>
+        <td class="grid_3">
           <%=  link_to topic.title , forum_topic_path(forum,topic) %>
           <%=  topic.posts.first.user.email%>
+          <%=  topic.posts.last.user.email%>
         </td>
       <% end %>
 
     </tr>
   <% end %>
-
-
 </table>
 
-<br />
+
 

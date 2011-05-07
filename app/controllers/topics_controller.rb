@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+#   after_filter lambda{ ::Topic.increment_counter('views_count', @topic.id) if @topic }, :only => :show
+
   # GET /topics
   # GET /topics.xml
   def index
@@ -14,6 +16,8 @@ class TopicsController < ApplicationController
   # GET /topics/1.xml
   def show
     @topic = Topic.find(params[:id])
+   Topic.increment_counter('views_count', @topic.id) if @topic
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @topic }

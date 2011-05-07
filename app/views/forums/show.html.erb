@@ -1,10 +1,9 @@
-<%= link_to "forums",forums_path %> >> <%= @forum.name  %>
+
+<div>
+  <h1><%= link_to "植物园论坛",forums_path %> > <%= @forum.name  %></h1>
+</div>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @forum.name %>
-</p>
 
 <p>
   <b>Description:</b>
@@ -12,19 +11,17 @@
 </p>
 <table>
   <tr>
-    <th>主题topic</th>
-    <td class="author">作者</td>
-    <td class="nums">回复/查看</td>
-    <td class="lastpost">最后发表</td>
+    <td class="grid_3">主题topic</td>
+    <td class="grid_3">作者</td>
+    <td class="grid_3">回复/查看</td>
+    <td class="grid_3">最后发表</td>
   </tr>
 <% @forum.topics.each do |topic| %>
   <tr>
-    <td><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
-    <td><%= topic.posts.first.user.email %></td>
-    <td><%= topic.posts.size %></td>
-    <td><%= topic.posts.last.body %></td>
-    <td>[<%=  topic.posts.last.updated_at %>]</td>
-    <td>[topic: <%=  topic.updated_at %>]</td>
+    <td class="grid_3"><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
+    <td class="grid_3"><%= topic.posts.first.user.email %></td>
+    <td class="grid_3"><%= topic.posts.size %> /<%= topic.views_count ? topic.views_count: 0 %> </td>
+    <td class="grid_3"><%= topic.posts.last.user.email %></td>
   </tr>
 <% end %>
 </table>
