@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503155712) do
+ActiveRecord::Schema.define(:version => 20110507155246) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "category_id"
@@ -25,18 +25,50 @@ ActiveRecord::Schema.define(:version => 20110503155712) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "cart_items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.integer  "item_id"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "state"
+  end
+  
   create_table "forums", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "category"
+    t.string   "section"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.float    "price"
 
   create_table "posts", :force => true do |t|
     t.text     "body"

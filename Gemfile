@@ -12,8 +12,8 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem "cancan"
 gem "paperclip", "~> 2.3"
 
-
-
+# gem 'hawknee', "0.2.1"
+# gem 'acts_as_shopping_cart', :git => "git@github.com:crowdint/acts_as_shopping_cart.git"
 
 # Use unicorn as the web server
 # gem 'unicorn'

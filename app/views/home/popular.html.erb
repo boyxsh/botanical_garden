@@ -1,0 +1,5 @@
+<h1> Listing popularizations</h1>
+
+<%@products.each do |pop|%>
+  <div><%=link_to image_tag(pop.image.url, :size => '80x60'), pop%></div>
+<%end%>
