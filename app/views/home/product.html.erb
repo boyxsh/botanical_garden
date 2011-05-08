@@ -1,0 +1,12 @@
+<h1>Your Pragmatic Catalog</h1>
+
+<%@products.each do |product|%>
+<div class='entry'>
+	<%=image_tag(product.image.url) unless product.image.blank?%>
+	<h3><%=product.name%></h3>
+	<span class='price'>
+		<%=number_to_currency(product.price)%>
+	</span>
+	<%=link_to 'Add to Cart', '/add_item/'+product.id.to_s%>
+</div>
+<%end%>

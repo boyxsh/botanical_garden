@@ -1,4 +1,6 @@
 BotanicalGarden::Application.routes.draw do
+  resources :products
+
   resources :categories
 
   resources :appreciations
@@ -7,6 +9,11 @@ BotanicalGarden::Application.routes.draw do
 
   devise_for :users
 
+  get "/popular(.:format)" => "home#popular"
+  get "/product(.:format)" => "home#product"
+  get "/add_item/:id" => "products#add_item"
+  get "/save_order/:id" => "products#save_order"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

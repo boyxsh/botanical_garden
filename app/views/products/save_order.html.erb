@@ -1,0 +1,23 @@
+<h1>Save order</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Quantity</th>
+    <th>Item</th>
+		<th>Price</th>
+  </tr>
+
+<% @cart_items.each do |ci| %>
+  <tr>
+    <td><%= ci.order_id %></td>
+    <td><%= ci.quantity %></td>
+    <td><%= ci.item_id %></td>
+		<td><%= ci.price %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%p @cart_items[0].order_id%>
+<%= link_to 'Order', "/save_order/#{@cart_items[0].order_id}" %>
