@@ -45,14 +45,24 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
     t.datetime "updated_at"
   end
 
-  create_table "orders", :force => true do |t|
-    t.integer  "user_id"
-    t.boolean  "state"
-  end
-  
   create_table "forums", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,13 +79,6 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.float    "price"
-
-  create_table "posts", :force => true do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories_on_item_and_table_and_month_and_year"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
 
   create_table "topics", :force => true do |t|
     t.string   "title"

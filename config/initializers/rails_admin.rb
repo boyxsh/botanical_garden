@@ -9,6 +9,7 @@ module RailsAdmin
     }
 
     def self.get_history_for_dates(mstart, mstop, ystart, ystop)
+      p "++++++++++++++++++++++++++++++++++++"
       sql_in = ""
       if mstart > mstop
         # fix by Dan Choi
