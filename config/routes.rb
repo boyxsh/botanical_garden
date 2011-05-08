@@ -1,4 +1,5 @@
 BotanicalGarden::Application.routes.draw do
+
   resources :products
 
   resources :categories
@@ -39,6 +40,20 @@ BotanicalGarden::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
+
+  resources :forums do
+    resources :topics do
+      resources :posts
+    end
+  end
+
+  #resources :forums do
+    #resources :topics 
+  #end
+
+    #resources :topics do
+      #resources :posts
+    #end
 
   # Sample resource route with sub-resources:
   #   resources :products do

@@ -1,0 +1,10 @@
+<%= form_for([@topic.forum, @topic, @topic.posts.build]) do |f| %>
+  <div class="field">
+  <%#= f.label :body %><br />
+    <%= f.label "回复内容" %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit "确认" %>
+  </div>
+<% end %>

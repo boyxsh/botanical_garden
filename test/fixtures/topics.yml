@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  state: MyString
+  priority: 1
+  views_count: 1
+  forum: 
+
+two:
+  title: MyString
+  state: MyString
+  priority: 1
+  views_count: 1
+  forum: 
