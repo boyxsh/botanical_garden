@@ -19,9 +19,9 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
-  <div class="field">
+   <div class="field">
     <%= f.label :category %><br />
-    <%= f.text_field :category %>
+    <%=select("appreciation", "category_id", Category.all.collect{|c|[c.name, c.id]}) %>
   </div>
   <div class="field">
     <%= f.label :section %><br />

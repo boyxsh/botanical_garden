@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110507155246) do
+ActiveRecord::Schema.define(:version => 20110508125522) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "category_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
   create_table "cart_items", :force => true do |t|
     t.integer  "order_id"
     t.integer  "quantity"
-    t.integer  "item_id"
+    t.integer  "product_id"
     t.float    "price"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,14 +45,24 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
     t.datetime "updated_at"
   end
 
-  create_table "orders", :force => true do |t|
-    t.integer  "user_id"
-    t.boolean  "state"
-  end
-  
   create_table "forums", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "state",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,13 +79,6 @@ ActiveRecord::Schema.define(:version => 20110507155246) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.float    "price"
-
-  create_table "posts", :force => true do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
