@@ -29,7 +29,8 @@ class TopicsController < ApplicationController
   def new
     @topic = Topic.new(:forum_id=>params[:forum_id])
     @forum = Forum.find(params[:forum_id])
-    @topic.id = Topic.find(:last).id + 1
+    tmp_topic = Topic.find(:last)
+    @topic.id = tmp_topic.blank? ? 1 :tmp_topic.id + 1 
 #    @forum.topics <<@topic
 #    post = Post.new
 #    @topic.posts << post
