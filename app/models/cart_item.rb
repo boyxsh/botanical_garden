@@ -1,23 +1,23 @@
 class CartItem < ActiveRecord::Base
   # acts_as_shopping_cart_item_for :user
   belongs_to :order
+  belongs_to :product
   named_scope :cart, lambda { |order| { :conditions => ['order_id = ?', order] } }
   
   #
   # Returns the cart item for the specified object
   #
   def self.item_for(object)
-    CartItem.where(:item_id => object.id).first
+    CartItem.where(:product_id => object.id).first
   end
 
   #
   # Returns the subtotal of a specified item by multiplying the quantity times
   # the price of the item.
   #
-  def subtotal_for(object)
-    item = item_for(object)
-    if item
-      item.quantity * item.price
+  def subtotal_for
+    if self.quantity && self.price
+      self.quantity * self.price
     end
   end
 
@@ -32,12 +32,9 @@ class CartItem < ActiveRecord::Base
   #
   # Updates the quantity of the specified object
   #
-  def update_quantity_for(object, new_quantity)
-    item = item_for(object)
-    if item
-      item.quantity = new_quantity
-      item.save
-    end
+  def update_quantity_for(new_quantity)
+    self.quantity = new_quantity
+    self.save
   end
 
   #

@@ -4,4 +4,6 @@ class Product < ActiveRecord::Base
     :thumb  => "200x150#",
     :medium => "800x600>",
   }
+  belongs_to :category
+  has_many :orders
 end

@@ -4,17 +4,9 @@ class ProductsController < ApplicationController
 
         product = Product.find_by_id(params[:id])
         order = Order.find_user_order(current_user.id)
-p order
         order = order.blank? ? Order.create(:user_id => current_user.id) : order[0]
-p order
         order.add(product, product.price)
-
-      end
-      @cart_items = CartItem.cart(order.id)
-
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @cart }
+        redirect_to "/order/"+order.id.to_s
       end
   end
   

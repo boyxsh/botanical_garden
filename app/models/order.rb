@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   # Returns the subtotal by summing the price times quantity for all the items in the cart
   #
   def subtotal
-    ("%.2f" % cart_items.sum("price * quantity")).to_f
+    ("%.2f" % self.cart_items.sum("price * quantity")).to_f
   end
   
   #
@@ -21,10 +21,10 @@ class Order < ActiveRecord::Base
   # Adds a product to the cart
   #
   def add(object, price, quantity = 1)
-    cart_item = CartItem.find(:first, :conditions => ['item_id = ? and order_id = ?', object.id, self.id])
+    cart_item = CartItem.find(:first, :conditions => ['product_id = ? and order_id = ?', object.id, self.id])
 
     unless cart_item
-      CartItem.create(:item_id => object.id, :price => price, :quantity => quantity, :order_id => self.id)
+      CartItem.create(:product_id => object.id, :price => price, :quantity => quantity, :order_id => self.id)
     else
       cart_item.quantity = (cart_item.quantity + quantity)
       cart_item.save

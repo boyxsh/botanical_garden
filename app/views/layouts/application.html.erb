@@ -3,8 +3,10 @@
   <head>
     <title>BotanicalGarden</title>
     <%= stylesheet_link_tag :all %>
+		<%= csrf_meta_tag %>
+		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
+		<%= javascript_include_tag 'rails' %>
     <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
   </head>
   <body>
     <p class="notice">
@@ -13,14 +15,25 @@
     <p class="alert"><%= alert %></p>
     <div id="yield_div" class="container_12">
       <header role="banner">
-        <p >
+			  <div  class="nav">
+			    <ul>
+						<li><%= link_to '首页', root_path%></li>
+			      <li><%= link_to '植物欣赏', appreciations_path%></li>
+			      <li><%= link_to '科普宣传', products_path%></li>
+						<li><%= link_to '信息交流', forums_path %></li>
+			      <li><%= link_to '植物种植', '#' %></li>
+			      <li><%= link_to '花市交易', '/product' %></li>
+			    </ul>
+			  </div>
+			  <div class='login'>
           <% if current_user %>
             您好:<%=  current_user.email %><%= link_to " 退出", destroy_user_session_path %>
           <%else%>
             <%= link_to "登录", new_user_session_path %> <%= link_to "注册", new_user_registration_path%>
           <%end%>
-        </p>
+        </div>
       </header>
+			<div class="clear"></div>
       <div class="main">
         <%= yield %>
       </div>

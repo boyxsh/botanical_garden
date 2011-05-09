@@ -1,0 +1,53 @@
+<h1>Listing products</h1>
+<script>
+$(function(){
+	$("a.update_quantity").click(function(){
+		// console.log($(this));
+		// console.log($(this).attr("name"));
+		// console.log($("#"+$(this).attr("name")).find(".quantity").val());
+		// return
+			$.ajax({
+    		url: '/update_item_quantity/'+$(this).attr("name")+"/"+$("#"+$(this).attr("name")).find(".quantity").val(),
+    		type: 'GET',
+    		dataType: 'html',
+    		timeout: 1000,
+    		error: function(){
+        	alert('Error loading XML document');
+    		},
+    		success: function(data){
+					if(data == "OK"){
+						$("p.notice").text("Successfully update quantity!");
+					}
+    		}
+			});
+		});
+});
+</script>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Quantity</th>
+		<th>Price</th>
+		<th>total</th>
+		<th>操作</th>
+  </tr>
+
+<% @cart_items.each do |ci| %>
+  <tr id="<%=ci.id%>">
+    <td><%= ci.product.name %></td>
+    <td><input class="quantity" value="<%=ci.quantity%>"/></td>
+		<td><%= ci.price %></td>
+		<td><%= ci.subtotal_for%></td>
+		<td><%=link_to '更新', '#', {:class => 'update_quantity', :name=> ci.id}%></td>
+		<td><%=link_to '删除', "/remove_item/#{ci.id}", :confirm => 'Are you sure?'%></td>
+  </tr>
+<% end %>
+	<tr>
+		<td colspan=3>TOTAL</td>
+		<td><%= @order.subtotal unless @order.blank?%></td>
+	</tr>
+</table>
+
+<br />
+<%= link_to '继续购物', '/product'%>
+<%= link_to '结算', "/save_order/#{@cart_items[0].order_id}" unless @cart_items.blank? %>
