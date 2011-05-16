@@ -1,12 +1,8 @@
-<h1>Your Pragmatic Catalog</h1>
-
-<%@products.each do |product|%>
-<div class='entry'>
-	<%=image_tag(product.image.url) unless product.image.blank?%>
-	<h3><%=product.name%></h3>
-	<span class='price'>
-		<%=number_to_currency(product.price)%>
-	</span>
-	<%=link_to 'Add to Cart', '/add_item/'+product.id.to_s%>
+<%@products.each do |pop|%>
+<div class="entry">
+	<%=image_tag(pop.image.url, :size => '200x150', :algin => 'left', :border => 0, :style => "margin-right:15px ")%>
+	<h3><%=pop.name%></h3>
+	<p><%=pop.description%></p>
+	<%=link_to 'Add to Cart', '/add_item/'+pop.id.to_s%>
 </div>
 <%end%>

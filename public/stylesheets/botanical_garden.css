@@ -1,54 +1,142 @@
-.post_body{
-    height: 130px;
+div#header {
+	background: url("/images/header-bg.gif") repeat-x scroll left top transparent;
+	height: 311px;
+	width: 100%;
 }
-.login{
-	float:right;
+#header .row-1 {
+  height: 89px;
 }
-div.nav {
-float:left;
-/*-moz-box-shadow:0 1px 1px #333333;*/
-<%#*background:url("img/gradient_light.jpg") repeat-x scroll 50% 50% #F8F8F8;%>
-<%#*border:1px solid #FCFCFC;%>
-padding:0 5px;
-position:relative;
-height:35px;
-/*right:0;*/
-/*margin-left:10px;*/
-<%#*top:4em;%>
-
-width:70%;
+.menu-block {
+    background: url("/images/top-menu-bg.gif") repeat-x scroll left top transparent;
+    width: 100%;
 }
-div.nav ul{
-	width:100%;
-/*	white-space:nowrap;*/
+.menu-block .left {
+    background: url("/images/top-menu-left.gif") no-repeat scroll left top transparent;
 }
-div.nav ul li a, div.nav ul li a:visited {
-color:#f8b63c;
-display:block;
-float:left;
-font-size:1.57em;
-font-weight:bold;
-margin:5px 2px;
-padding:7px 10px 4px;
-<%#*text-shadow:0 1px 1px white;%>
-text-transform:uppercase;
-display:inline;
+.menu-block .right {
+    background: url("/images/top-menu-right.gif") no-repeat scroll right top transparent;
+    height: 89px;
 }
-a, a:visited {
-color:#0196E3;
-outline:medium none;
-text-decoration:none;
+.menu-block ul {
+    overflow: hidden;
+    padding: 42px 0 0;
 }
-div.nav ul li {
-display:inline;
-margin-left:0px;
+.menu-block ul li {
+    display: inline;
+    margin-left: -1px;
 }
-
-div.nav ul li a:hover{
-  background-color:#2e2e2e;
-    <%#*text-decoration:none;%>
-  color:#ffff00;
+.menu-block ul li a {
+    background: url("/images/divider.gif") no-repeat scroll left 3px transparent;
+    color: #FFFFFF;
+    font-family: "trebuchet ms";
+    font-size: 1.1em;
+    padding: 0 53px 0 54px;
+    text-decoration: none;
 }
-div.clear{
+.menu-block ul li a:hover{
+	text-decoration:underline;
+}
+#header .row-2 {
+    background: url("/images/header-bg.jpg") repeat-x scroll left top transparent;
+    height: 222px;
+}
+#header .row-2 .left {
+    background: url("/images/header-left.jpg") no-repeat scroll left top transparent;
+}
+#header .row-2 .right {
+    background: url("/images/header-right.jpg") no-repeat scroll right top transparent;
+    height: 222px;
+}
+#header .logo {
+    padding: 89px 69px 38px 0;
+    text-align: right;
+}
+h1 {
+    color: #000000;
+    font-size: 3em;
+    font-weight: normal;
+    letter-spacing: -1px;
+    line-height: 1.1em;
+}
+h1 a {
+    color: #000000;
+    text-decoration: none;
+}
+div .login {
+	   margin: -50px 69px 30px 0;
+	    text-align: right;
+}
+.content {
+    background: url("/images/cont-left.gif") repeat-y scroll left top #FFFFFF;
+}
+.content .indent {
+    padding: 0 4px 0 8px;
+}
+.content .bg_right {
+    background: url("/images/cont-right.gif") repeat-y scroll right top transparent;
+}
+.w100 {
+    width: 100%;
+}
+.column_center {
+    float: left;
+    width: 100%;
+}
+.indent_center {
+    margin: 0 0 0 10px;
+    padding: 4px 29px 0 4px;
+}
+.column_center .bg-line {
+    background: url("/images/bg-line.gif") repeat-x scroll left top transparent;
+}
+.indent_center2 {
+    padding: 24px 3px 40px 10px;
+}
+.text_box {
+    font-size: 1em;
+    padding: 0 12px 17px 0;
+}
+.entry {
+    border-bottom: 1px dotted #7777DD;
+    margin-top: 1em;
+    overflow: auto;
+}
+.entry img {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.entry h3 {
+    color: #222277;
+    margin-bottom: 2px;
+    margin-top: 0;
+}
+.entry p {
+    margin-bottom: 0.8em;
+    margin-top: 0.5em;
+}
+#footer {
+    background: url("/images/footer-bg.gif") repeat-x scroll left top transparent;
+    color: #B2B2B2;
+    font-family: tahoma;
+    font-size: 1.01em;
+    height: 82px;
+    line-height: 1.1em;
+}
+#footer .left {
+    background: url("/images/footer-left.gif") no-repeat scroll left top transparent;
+}
+#footer .right {
+    background: url("/images/footer-right.gif") no-repeat scroll right top transparent;
+    height: 82px;
+}
+#footer p {
+    padding: 28px 0 0 39px;
+}
+#footer a {
+    color: #B2B2B2;
+    text-decoration: none;
+}
+.clear {
 	clear:both;
 }
