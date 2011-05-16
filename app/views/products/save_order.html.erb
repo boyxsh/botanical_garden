@@ -1,23 +1,22 @@
-<h1>Save order</h1>
-
-<table>
-  <tr>
-    <th>Owner</th>
-    <th>Quantity</th>
-    <th>Item</th>
-		<th>Price</th>
-  </tr>
-
-<% @cart_items.each do |ci| %>
-  <tr>
-    <td><%= ci.order_id %></td>
-    <td><%= ci.quantity %></td>
-    <td><%= ci.product_id %></td>
-		<td><%= ci.price %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-<%p @cart_items[0].order_id%>
-<%= link_to 'Order', "/save_order/#{@cart_items[0].order_id}" %>
+<div class="o_show">
+	<h1><span style="margin-right:700px;">商品清单</span></h1>
+	<div class="middle">
+		<table width="100%" cellspacing="0" cellpadding="0" class="Table">
+			<tbody><tr class="align_Center Thead">
+				<td>商品名称</td>
+				<td width="10%">价格</td>
+				<td width="9%">商品数量</td>
+			</tr>
+			<% @cart_items.each do |ci| %>
+			<tr class="align_Center">
+				<td class="align_Left"><%= ci.product.name %>
+				</td>
+				<td><span class="price"><%= ci.price %></span></td>
+				<td><%= ci.quantity %></td>
+			</tr>
+			<% end %>
+			<tr><td colspan="3" style="text-align:right;font-size:15px;"><b>应付总额：<font color="red"><%= @order.subtotal unless @order.blank?%></font> 元</b></td></tr>
+		</tbody></table>
+	</div>
+	<div class="footer"></div>
+</div>

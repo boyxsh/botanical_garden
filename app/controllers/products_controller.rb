@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   
   def save_order
     unless params[:id].blank?
+      @order = Order.find_by_id(params[:id])
       Order.find_by_id(params[:id]).update_attributes(:state => 1)
       @cart_items = CartItem.cart(current_user.id)
       # p @cart_items
