@@ -5,8 +5,12 @@ $(function(){
 		// console.log($(this).attr("name"));
 		// console.log($("#"+$(this).attr("name")).find(".quantity").val());
 		// return
+		var obj = $("#"+$(this).attr("name"));
+		var quantity = obj.find(".quantity").val();
+		var price = obj.find(".price").text();
+		var sub = obj.find(".sub").text();
 		$.ajax({
-			url: '/update_item_quantity/'+$(this).attr("name")+"/"+$("#"+$(this).attr("name")).find(".quantity").val(),
+			url: '/update_item_quantity/'+$(this).attr("name")+"/"+quantity,
 			type: 'GET',
 			dataType: 'html',
 			timeout: 1000,
@@ -16,6 +20,7 @@ $(function(){
 			success: function(data){
 				if(data == "OK"){
 					$("p.notice").text("Successfully update quantity!");
+					window.location.reload();
 				}
 			}
 		});
@@ -30,10 +35,10 @@ $(function(){
 			<table width="100%" cellspacing="0" cellpadding="0" id="CartTb" class="Table">
 				<tbody><tr class="align_Center Thead">
 					<td>名称</td>
-					<td width="14%">数量</td>
+					<td width="12%">数量</td>
 					<td width="8%">价格</td>
 					<td width="9%">总和</td>
-					<td width="7%">操作</td>
+					<td width="9%">操作</td>
 				</tr>
 				<% @cart_items.each do |ci| %>
 				<%p ci%>
@@ -48,9 +53,9 @@ $(function(){
 					<td>
 						<span class="price"><%= ci.price %></span>
 					</td>
-					<td><%= ci.subtotal_for%>
+					<td class="sub"><%= ci.subtotal_for%>
 					</td>
-					<td><%=link_to '更新', '#', {:class => 'update_quantity', :name=> ci.id}%><%=link_to '删除', "/remove_item/#{ci.id}", :confirm =>' 确认删除?'%></td>
+					<td><%=link_to '更新', '#', {:class => 'update_quantity', :name=> ci.id}%>&nbsp;|&nbsp;<%=link_to '删除', "/remove_item/#{ci.id}", :confirm =>' 确认删除?'%></td>
 				</tr>
 				<% end %>
 				<tr>
