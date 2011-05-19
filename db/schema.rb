@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110508125522) do
+ActiveRecord::Schema.define(:version => 20110519151148) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "category_id"
@@ -54,21 +54,6 @@ ActiveRecord::Schema.define(:version => 20110508125522) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "posts", :force => true do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.integer  "topic_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "orders", :force => true do |t|
-    t.integer  "user_id"
     t.boolean  "state",      :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20110508125522) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.float    "price"
+    t.string   "behaviour"
+    t.string   "meaning"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

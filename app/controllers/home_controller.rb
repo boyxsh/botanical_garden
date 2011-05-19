@@ -11,6 +11,16 @@ class HomeController < ApplicationController
     end
   end
   
+  def pop_show
+    unless params[:id].blank?
+      @p = Product.find_by_id params[:id]
+      respond_to do |format|
+        format.html # index.html.erb
+        format.xml  { render :xml => @products }
+      end
+    end
+  end
+  
   def product
     @products = Product.all
     

@@ -17,6 +17,7 @@ BotanicalGarden::Application.routes.draw do
   get "/save_order/:id" => "products#save_order"
   get "/update_item_quantity/:id/:quantity" => "home#update_item_quantity"
   get "/remove_item/:id" => "home#remove_item"
+  get "/pop_show/:id" => "home#pop_show"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -82,7 +83,7 @@ BotanicalGarden::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => "welcome#index"
-   root :to => "home#index"
+   root :to => "home#popular"
   
 
   # See how all your routes lay out with "rake routes"
