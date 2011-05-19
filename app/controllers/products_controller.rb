@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     unless params[:id].blank?
       @order = Order.find_by_id(params[:id])
       Order.find_by_id(params[:id]).update_attributes(:state => 1)
-      @cart_items = CartItem.cart(current_user.id)
+      @cart_items = CartItem.cart(@order.id)
       # p @cart_items
       respond_to do |format|
         format.html # index.html.erb
