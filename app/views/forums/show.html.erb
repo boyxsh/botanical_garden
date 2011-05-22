@@ -1,30 +1,32 @@
 
-<div>
+<div class="container_12 forum_show box_round box_shadow box_gradient box_textshadow">
   <h1><%= link_to "植物园论坛",forums_path %> > <%= @forum.name  %></h1>
-</div>
+
 <p id="notice"><%= notice %></p>
 
 
 <p>
-  <b>Description:</b>
+  <b>关于本论坛:</b>
   <%= @forum.description %>
+  <b class="new_topic_in_forum"><%= link_to "发帖" , {:action=>"new", :controller=>"topics", :forum_id => @forum.id} %></b>
 </p>
+
 <table>
-  <tr>
-    <td class="grid_3">主题topic</td>
-    <td class="grid_3">作者</td>
-    <td class="grid_3">回复/查看</td>
+  <tr class="table_topic_head">
+    <td class="grid_6 my_tr">主题</td>
+    <td class="grid_2">作者/时间</td>
+    <td class="grid_1">回复/查看</td>
     <td class="grid_3">最后发表</td>
   </tr>
 <% @forum.topics.each do |topic| %>
-  <tr>
-    <td class="grid_3"><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
-    <td class="grid_3"><%= topic.posts.first.user.email %></td>
-    <td class="grid_3"><%= topic.posts.size %> /<%= topic.views_count ? topic.views_count: 0 %> </td>
-    <td class="grid_3"><%= topic.posts.last.user.email %></td>
+  <tr class="table_topic_context">
+    <td class="grid_6 my_td"><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
+    <td class="grid_2"><em><%= topic.posts.first.user.name %></em><p class="last_show"><%= topic.posts.first.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p></td>
+    <td class="grid_1"><%= topic.posts.size %> /<%= topic.views_count ? topic.views_count: 0 %> </td>
+    <td class="grid_3"><%= topic.posts.last.user.name %></td>
   </tr>
 <% end %>
 </table>
-<%= link_to "newTopics" , {:action=>"new", :controller=>"topics", :forum_id => @forum.id} %>
 <%#= link_to 'Edit', edit_forum_path(@forum) %> 
 <%#= link_to 'Back', forums_path %>
+</div>
