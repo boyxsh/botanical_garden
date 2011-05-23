@@ -1,12 +1,9 @@
 
-<h1>植物欣赏 <div class="serach">searchs</div> </h1>
-<div class="container_16 xsh">
-<% @appreciations.each do |appreciation| %>
-  <div class="grid_3 appreciation_index ">
-    <td><%= link_to image_tag(appreciation.avatar.url(:thumb)), :action => 'show', :id => appreciation%>
-      <p><%= appreciation.name %> <em><%= appreciation.category.name %></em></p></td>
-  </div>
+<h1>植物欣赏 <div class="serach"> <%= form_tag search_appreciations_path , :method => 'get' do %>
+   <p>
+     <%= text_field_tag :search, params[:search] %>
+     <%= submit_tag "Search", :name => nil %>
+   </p>
+ <% end %>  </div> </h1>
 
-<% end %>
-
-</div>
+<%= render :partial => "index_part" , :object => @appreciations %>
