@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110519151148) do
+ActiveRecord::Schema.define(:version => 20110521062225) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "category_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20110519151148) do
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
-    t.boolean  "state",      :default => false
+    t.boolean  "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20110519151148) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

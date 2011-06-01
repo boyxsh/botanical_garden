@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+    before_filter :user_login? 
 #   after_filter lambda{ ::Topic.increment_counter('views_count', @topic.id) if @topic }, :only => :show
 
   # GET /topics

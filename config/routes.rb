@@ -4,7 +4,11 @@ BotanicalGarden::Application.routes.draw do
 
   resources :categories
 
-  resources :appreciations
+  resources :appreciations do
+    collection do
+      get 'search'
+    end
+  end
 
   get "home/index"
 

@@ -1,32 +1,32 @@
+<div class="container_12  box_round box_shadow box_textshadow">
+  <h1 >植物园论坛</h1>
 
-<h1 >植物园论坛</h1>
+  <div class="forum_top_line">
 
+    <% @forums.each do |forum| %>
+    <div class="grid_6 end_line">
+ 
+        <div class="forum_title">
+          <h1 ><%= link_to forum.name ,forum_path(forum)%>
+            <em> (今日: <strong><%= forum.topics.today_created.size %></strong>)</em>
+          </h1>
+          <p><%= forum.description %></p>
+          <p> 主题数:<%=  forum.topics.size%>/回复数：<%=  forum.posts.size%></p>
+           <%  if topic = forum.get_latest_posted_topic %>
+          <p>最新回复:<%=  link_to "#{topic.title[0,6]}..." , forum_topic_path(forum,topic) %>
+          —by 
+          <%=  topic.posts.last.user.name%> <em class="last_show"><%= topic.posts.last.created_at.strftime('%Y-%m-%d %H:%M:%S') %></em>
+        </p>
+          <% else %>
+          <p> &ensp;</p>
+           <% end %>
+        </div>
+        
+    </div>
 
-<table>
-
-  <tr>
-    <td class="grid_3">版块</td>
-    <td class="grid_3">主题</td>
-    <td class="grid_2">帖数</td>
-    <td class="grid_3">最后发表</td>
-  </tr>
-
-<% @forums.each do |forum| %>
-    <tr >
-      <td class="grid_3"><h2><%= link_to forum.name ,forum_path(forum)%></h2></td>
-      <td class="grid_3"><p><%= forum.description %></p></td>
-      <td class="grid_2"><%=  forum.posts.size%></td>
-      <%  if topic = forum.get_latest_posted_topic %>
-        <td class="grid_3">
-          <%=  link_to topic.title , forum_topic_path(forum,topic) %>
-          <%=  topic.posts.first.user.email%>
-          <%=  topic.posts.last.user.email%>
-        </td>
-      <% end %>
-
-    </tr>
-  <% end %>
-</table>
+    <% end %>
+    </div>
+  </div
 
 
 

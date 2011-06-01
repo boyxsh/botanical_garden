@@ -47,4 +47,13 @@ module RailsAdmin
     end
   end
 end
+RailsAdmin.config do |config|
+  config.model User do
+    update do
+      field :name do
+        partial "user_state_partial"
+      end
+    end
+  end
+end
 

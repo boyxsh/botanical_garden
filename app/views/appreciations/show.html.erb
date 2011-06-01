@@ -1,32 +1,36 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Categories:</b>
-  <%= @appreciation.category.name %>
-</p>
+<h1><%= link_to "植物欣赏",appreciations_path %> > <%= @appreciation.name %></h1>
 
+<div class="container_12 appreciation_show  box_round box_shadow  box_textshadow">
 <p>
-  <b>Name:</b>
+<div class="grid_5">
+<%= image_tag @appreciation.avatar.url(:medium) %>
+</div>
+<%#*<div  class="grid_7">%>
+
+  <em class="grid_7">
+
+  <p>
+  <b>名称:</b>
   <%= @appreciation.name %>
-</p>
+</p>    
+<p>
+  <b>种类:</b>
+  <%= @appreciation.category.name %>
+  </p>
 
 <p>
-  <b>Title:</b>
+  <b>简介:</b>
   <%= @appreciation.title %>
 </p>
-
-<p>
-  <b>Image:</b>
-<%= image_tag @appreciation.avatar.url(:medium) %>
+  </em>
+  <%#*</div>%>
 </p>
 
 <p>
-  <b>Description:</b>
-  <pre>
+  <pre class="box_round">
   <%= @appreciation.description %>
   </pre>
 </p>
 
-
-<%= link_to 'Edit', edit_appreciation_path(@appreciation) %> |
-<%= link_to 'Back', appreciations_path %>
+</div>

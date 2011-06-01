@@ -1,4 +1,5 @@
 class ForumsController < ApplicationController
+  before_filter :user_login? 
   # GET /forums
   # GET /forums.xml
   def index

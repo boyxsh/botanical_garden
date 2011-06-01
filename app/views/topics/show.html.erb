@@ -1,43 +1,33 @@
-<h1>
+<h1 class="my_post_box_gradient">
   <%= link_to "植物园论坛",forums_path %> > <%= link_to @topic.forum.name ,forum_path(@topic.forum)%> >  <%= @topic.title %>
+  <em class="replay_post"><a href="#post_form_part" > 发表回复</a></em>
 </h1>
 
-<p>
-  <b>Title:</b>
-  <%= @topic.title %>
-</p>
 
-<p>
-  <b>State:</b>
-  <%= @topic.state %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @topic.priority %>
-</p>
-
-<p>
-  <b>Views count:</b>
-  <%= @topic.views_count %>
-</p>
-
-
-
-
+<table class="my_post_table">
 <% @topic.posts.each_with_index do |post, index| %>
-  <table >
-    <tr>
-      <td><%= index+1 %>楼  <%= post.user.email %> [<%= post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>] <%= "发表于" + show_post_time(post.created_at) %></td>
-    </tr>
-    <tr class="post_body">
-      <td> <%=post.body %> by </td>
-    </tr>
-  </table>
+  <tr>
+<td class=" post_left">
+  <p class="post_user_name"><%= post.user.name %></p>
+  <%= image_tag("noavatar_middle.gif")  %>
+</td>
+<td class=" post_right">
+  <p class="my_border_bottom"><%= "发表于 " + show_post_time(post.created_at) %> <em><%= index+1 %>楼</em></p>
+  <% if index == 0 %>
+  <h2 class="my_border_bottom"><%= @topic.title %></h2>
+  <%end%>
+    <%#*<tr class="post_body">%>
+  <%#=post.body %>
+  <pre>
+<%=post.body %>
+  </pre>
+  
+</td>
+</tr>
 <% end %>
+</table>
 
-<%#*<h2>回复</h2>%>
+<div class="post_form_part" id="post_form_part">
 <%= render "posts/form" %>
+</div>
 
-<%#= link_to 'Edit', edit_topic_path(@topic) %> 
-<%#= link_to 'Back', topics_path %>

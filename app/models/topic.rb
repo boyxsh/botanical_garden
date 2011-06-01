@@ -2,6 +2,7 @@ class Topic < ActiveRecord::Base
   belongs_to :forum
   has_many :posts
   accepts_nested_attributes_for :posts
+  named_scope :today_created , :conditions =>  ['created_at >= ?', Date.today]
 #
 #    @@all_topic_views = 0
 #    attr_accessor :self_topic_views

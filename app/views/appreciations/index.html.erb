@@ -1,35 +1,9 @@
-<h1>Listing appreciations</h1>
 
-<table>
-  <tr>
-    <th>Categories</th>
-    <th>image</th>
-    <th>Name</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>植物欣赏 <div class="serach"> <%= form_tag search_appreciations_path , :method => 'get' do %>
+   <p>
+     <%= text_field_tag :search, params[:search] %>
+     <%= submit_tag "Search", :name => nil %>
+   </p>
+ <% end %>  </div> </h1>
 
-<% @appreciations.each do |appreciation| %>
-  <tr>
-    <td><%= appreciation.category.name %></td>
-    <td><%= link_to image_tag(appreciation.avatar.url(:thumb)), :action => 'show', :id => appreciation%></td>
-    <td><%= appreciation.name %></td>
-    <td><%= appreciation.title %></td>
-    <td>
-      <pre>
-      <%= appreciation.description[1..50] %>...
-      </pre>
-    </td>
-    <td><%= link_to 'Show', appreciation %></td>
-    <td><%= link_to 'Edit', edit_appreciation_path(appreciation) %></td>
-    <td><%= link_to 'Destroy', appreciation, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Appreciation', new_appreciation_path %>
+<%= render :partial => "index_part" , :object => @appreciations %>

@@ -3,7 +3,6 @@ class AppreciationsController < ApplicationController
   # GET /appreciations.xml
   def index
     @appreciations = Appreciation.all(:include => :category)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @appreciations }
@@ -80,5 +79,10 @@ class AppreciationsController < ApplicationController
       format.html { redirect_to(appreciations_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def search
+    @appreciations = Appreciation.search_by(params[:search])
+    render :action => "index" , :collection => @appreciations
   end
 end

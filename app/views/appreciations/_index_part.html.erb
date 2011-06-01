@@ -1,0 +1,10 @@
+<div class="container_16">
+<% @appreciations.each do |appreciation| %>
+  <div class="grid_3 appreciation_index ">
+    <td><%= link_to image_tag(appreciation.avatar.url(:thumb)), :action => 'show', :id => appreciation%>
+      <p><%= appreciation.name %> <em><%= appreciation.category.name %></em></p></td>
+  </div>
+
+<% end %>
+
+</div>
