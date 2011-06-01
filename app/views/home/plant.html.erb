@@ -1,0 +1,55 @@
+<script>
+	j = 1;
+	imgURL = "./images/GRW113/image";
+	id = null;
+	maxNum = 500;
+	function playMovie(){
+		showImg($("#plant"));
+		j++;
+		
+		if(j > maxNum){
+			clearInterval(id);
+			j= 1;
+		}
+	}
+	$(document).ready(function(){
+		showImg($("#plant"));
+		$("#play").click(function(){
+			id = setInterval('playMovie()', 33);
+		});
+		$("#pause").click(function(){
+			showImg($("#plant"));
+			clearInterval(id);
+		});
+		$("#forecast").click(function(){
+			if(j + 30 < maxNum){
+				j = j + 30;
+				showImg($("#plant"));
+			}
+			
+		});
+		$("#back").click(function(){
+			if(j - 30 > 0)
+			j = j - 30;
+			showImg($("#plant"));
+		});
+	});
+	
+	function showImg(obj){
+		obj.attr('src', imgURL + j + ".jpg");
+	}
+</script>
+
+<div class="entry-content article">
+	<h2 class="title">植物种植</h2>
+</div>
+<div class="plant">
+	
+<img id='plant' src=""><br/><br/><br/><br/><!-- width="480" height="320"-->
+<div class="actions">
+<input type='button' id='play' value="Play">
+<input type='button' id='pause' value="Pause">
+<input type='button' id='forecast' value=">>">
+<input type='button' id='back' value="<<">
+</div>
+</div>

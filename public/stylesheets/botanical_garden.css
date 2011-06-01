@@ -278,3 +278,8 @@ div.o_show, .entry-content{
 	margin-top:5px;
 	border-bottom: 1px solid #DEDFE1;
 }
+.plant,.actions {
+	width: 930px;
+	margin: 0 auto;
+	text-align: center;
+}

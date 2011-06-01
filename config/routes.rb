@@ -18,6 +18,7 @@ BotanicalGarden::Application.routes.draw do
   get "/update_item_quantity/:id/:quantity" => "home#update_item_quantity"
   get "/remove_item/:id" => "home#remove_item"
   get "/pop_show/:id" => "home#pop_show"
+  get "/plant" => "home#plant"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
