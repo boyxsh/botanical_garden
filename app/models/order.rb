@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  belongs_to :product
   has_many :cart_items
   
   named_scope :find_user_order, lambda { |user| { :conditions => ['user_id = ? and state = 0', user] } }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110521062225) do
+ActiveRecord::Schema.define(:version => 20110604045350) do
 
   create_table "appreciations", :force => true do |t|
     t.integer  "category_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20110521062225) do
     t.boolean  "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "product_id"
   end
 
   create_table "posts", :force => true do |t|
@@ -70,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20110521062225) do
   create_table "products", :force => true do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "category"
+    t.integer  "category_id"
     t.string   "section"
     t.datetime "created_at"
     t.datetime "updated_at"
