@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
+  before_filter :user_login?
+  
   def index
+    redirect_to '/popular'
   end
 
   def popular

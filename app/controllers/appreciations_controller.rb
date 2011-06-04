@@ -1,4 +1,5 @@
 class AppreciationsController < ApplicationController
+  before_filter :user_login?
   # GET /appreciations
   # GET /appreciations.xml
   def index
