@@ -23,6 +23,7 @@
     <td class="grid_6 my_td"><%= link_to topic.title, { :controller => "topics", :action => "show", :forum_id => @forum.id ,:id=>topic.id} %></td>
     <td class="grid_2"><em><%= topic.posts.first.user.name %></em><p class="last_show"><%= topic.posts.first.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p></td>
     <td class="grid_1"><%= topic.posts.size %> /<%= topic.views_count ? topic.views_count: 0 %> </td>
+    <% p topic.posts.last.user %>
     <td class="grid_3"><%= topic.posts.last.user.name %></td>
   </tr>
 <% end %>

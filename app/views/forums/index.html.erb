@@ -15,7 +15,7 @@
            <%  if topic = forum.get_latest_posted_topic %>
           <p>最新回复:<%=  link_to "#{topic.title[0,6]}..." , forum_topic_path(forum,topic) %>
           —by 
-          <%=  topic.posts.last.user.name%> <em class="last_show"><%= topic.posts.last.created_at.strftime('%Y-%m-%d %H:%M:%S') %></em>
+          <%=  topic.posts.last.user.name %> <em class="last_show"><%= topic.posts.last.created_at.strftime('%Y-%m-%d %H:%M:%S') %></em>
         </p>
           <% else %>
           <p> &ensp;</p>
